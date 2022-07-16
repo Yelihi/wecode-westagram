@@ -1,0 +1,49 @@
+@mixin flex-center($direction: center) {
+  display: flex;
+  justify-content: $direction;
+  align-items: center;
+}
+
+.friend {
+  .top-article__info {
+    position: relative;
+    @include flex-center;
+    flex-direction: column;
+    margin: 0 0.8rem;
+    gap: 0.4rem;
+    width: fit-content;
+    height: inherit;
+
+    &:last-child:after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: -0.8rem;
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+  }
+
+  .info-image {
+    width: 66px;
+    height: 66px;
+    border: 2px solid orange;
+    border-radius: 50%;
+
+    img {
+      width: 62px;
+      height: 62px;
+      border-radius: inherit;
+      object-fit: cover;
+      object-position: center;
+      padding: 0.1rem;
+    }
+  }
+
+  .info-content {
+    font-size: 13px;
+    width: auto;
+    height: 15px;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,57 @@
+@mixin flex-center($direction: center) {
+  display: flex;
+  justify-content: $direction;
+  align-items: center;
+}
+
+.profileBox {
+  .profile-container {
+    @include flex-center($direction: space-between);
+    width: 100%;
+    height: 70px;
+    margin-top: 15px;
+    padding-right: 5px;
+  }
+
+  .profile-left {
+    @include flex-center($direction: space-between);
+    gap: 1rem;
+  }
+
+  .profile-image {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .profile-name {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1rem;
+    margin-left: 2px;
+  }
+
+  .profile-user {
+    font-size: 14.7px;
+    font-weight: 700;
+  }
+
+  .profile-fullname {
+    font-size: 13.8px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .profile-right {
+    font-size: 12px;
+    color: #0597f2;
+    font-weight: 600;
+  }
+}

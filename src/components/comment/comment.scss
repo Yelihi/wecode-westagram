@@ -1,0 +1,34 @@
+@mixin flex-center($direction: center) {
+  display: flex;
+  justify-content: $direction;
+  align-items: center;
+}
+
+.description-comment {
+  @include flex-center($direction: space-between);
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.comment-left {
+  @include flex-center($direction: flex-start);
+  gap: 0.3rem;
+}
+
+.user-name {
+  font-weight: 600;
+}
+
+.comment-right {
+  @include flex-center($direction: space-between);
+  gap: 0.3rem;
+
+  i {
+    color: rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      cursor: pointer;
+      color: #000;
+    }
+  }
+}

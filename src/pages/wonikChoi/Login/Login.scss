@@ -1,0 +1,237 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* common */
+
+:root {
+  --logo-font: 'Lobster', cursive;
+  --body-font: sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f2f2f2;
+  font-family: var(--body-font);
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+/* login */
+
+.login {
+  .container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+  }
+
+  .container-center {
+    @include flex-center;
+    width: 100%;
+    height: auto;
+    margin: 3rem 3rem;
+  }
+
+  .background_image {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 468.32px;
+    height: 634.15px;
+    background-image: url(../../../assets/images/wonikChoi/background-instgram.png);
+    background-size: 468.32px 634.15px;
+  }
+
+  .image {
+    height: 538.84px;
+    position: absolute;
+    left: 160px;
+    top: 28px;
+    width: 250px;
+    opacity: 0;
+    transition: opacity 1.3s 1.3s ease-in-out;
+  }
+
+  .active {
+    opacity: 1;
+  }
+
+  .login-container {
+    @include flex-center;
+    flex-direction: column;
+    height: 480px;
+    width: 350px;
+    margin-right: 3.5rem;
+  }
+
+  .login-container__input {
+    background-color: white;
+    height: auto;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .login-logo {
+    @include flex-center;
+    width: 100%;
+    height: 100px;
+    margin: 1rem 0;
+
+    span {
+      font-size: 2.8rem;
+      font-family: var(--logo-font);
+    }
+  }
+
+  .login-input {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 145px;
+  }
+
+  .login-input__ID {
+    height: 35px;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(188, 185, 185, 0.1);
+    margin-bottom: 8px;
+
+    &:focus {
+      border-color: rgba(0, 0, 0, 0.5);
+      outline: none;
+    }
+
+    &[placeholder] {
+      font-size: 12px;
+    }
+  }
+
+  .login-input__PW {
+    height: 35px;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(188, 185, 185, 0.1);
+    margin-bottom: 15px;
+
+    &:focus {
+      border-color: rgba(0, 0, 0, 0.5);
+      outline: none;
+    }
+
+    &[placeholder] {
+      font-size: 12px;
+    }
+  }
+
+  .login-button {
+    height: 31px;
+    border: none;
+    background-color: #aed8f2;
+    border-radius: 0.3rem;
+    color: white;
+  }
+
+  .login-separate {
+    @include flex-center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .login-separate__line {
+    height: 1px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .login-separate__span {
+    @include flex-center;
+    width: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  .login-facebook {
+    @include flex-center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 15px;
+    color: #3e588c;
+    margin-bottom: 1.5rem;
+  }
+
+  .login-facebook__img {
+    width: 15px;
+    height: 15px;
+    background-image: url(../../../assets/images/wonikChoi/facebooklogo.png);
+    background-size: cover;
+  }
+
+  .login-lostPassword {
+    @include flex-center;
+    font-size: 12px;
+    color: #3e588c;
+    margin-bottom: 2rem;
+  }
+
+  .login-container__inroll {
+    @include flex-center;
+    width: 100%;
+    height: 65px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: white;
+  }
+
+  .login-inroll__span {
+    display: flex;
+    align-items: center;
+    padding: 0.2rem;
+    font-size: 14px;
+    gap: 0.2rem;
+
+    span {
+      font-weight: bold;
+      color: #0597f2;
+    }
+  }
+
+  /* 로그인 버튼 자바스크립트 */
+
+  .login-button.focus {
+    background-color: #0597f2;
+    cursor: pointer;
+  }
+
+  /* media query */
+
+  @media screen and (max-width: 850px) {
+    .background_image {
+      display: none;
+    }
+
+    .login-container {
+      margin-right: 0;
+    }
+  }
+}
