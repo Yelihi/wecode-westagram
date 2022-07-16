@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './Login.scss';
 import '../../../styles/reset.scss';
 
@@ -43,7 +44,18 @@ const LoginWon = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    navigate('/main-won');
+
+    let body = {
+      email: value.email,
+      password: value.password,
+    };
+    axios.post('/api/users/login', body).then(res => {
+      if (res.data.loginSuccess) {
+        navigate('/main-won');
+      } else {
+        alert('로그인에 실패했습니다');
+      }
+    });
   };
 
   return (
