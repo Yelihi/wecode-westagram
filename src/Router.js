@@ -10,6 +10,7 @@ import LoginSeong from './pages/seongeunPark/Login/Login';
 import MainSeong from './pages/seongeunPark/Main/Main';
 import LoginWon from './pages/wonikChoi/Login/Login';
 import MainWon from './pages/wonikChoi/Main/Main';
+import RegisterWon from './pages/wonikChoi/Register/Register';
 
 const Router = () => {
   return (
@@ -25,6 +26,7 @@ const Router = () => {
         <Route path="/main-seong" element={<MainSeong />} />
         <Route path="/login-won" element={<LoginWon />} />
         <Route path="/main-won" element={<MainWon />} />
+        <Route path="/register-won" element={<RegisterWon />} />
       </Routes>
     </BrowserRouter>
   );

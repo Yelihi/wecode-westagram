@@ -34,7 +34,7 @@ const initialState = {
   ],
 };
 
-export default function Feed({ userName, userImg, userBackImg }) {
+export default function Feed({ userName, userImg, userBackImg, userNickName }) {
   const [comment, setComment] = useState('');
   const [commentInfo, dispatch] = useReducer(reducer, initialState);
   const [like, setLike] = useState('');
@@ -121,6 +121,7 @@ export default function Feed({ userName, userImg, userBackImg }) {
                 comment={message.comment}
                 id={message.id}
                 dispatch={dispatch}
+                nickName={userNickName}
               />
             );
           })}

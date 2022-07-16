@@ -40,7 +40,7 @@ const LoginWon = () => {
     setValue(prevValue => ({ ...prevValue, [name]: value }));
   };
 
-  let validation = value.email.includes('@') && value.password.length > 5;
+  let validation = value.email.includes('@') && value.password.length > 4;
 
   const onSubmit = e => {
     e.preventDefault();
@@ -125,7 +125,7 @@ const LoginWon = () => {
             <div className="login-container__inroll">
               <div className="login-inroll__span">
                 <p>계정이 없으신가요?</p>
-                <span>가입하기</span>
+                <span onClick={() => navigate('/register-won')}>가입하기</span>
               </div>
             </div>
           </div>

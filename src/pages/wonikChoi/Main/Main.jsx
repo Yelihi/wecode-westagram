@@ -1,59 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Feed from '../../../components/feed/Feed';
 import ProfileBox from '../../../components/profileBox/ProfileBox';
 import RecommendBox from '../../../components/recommendBox/RecommendBox';
 import Nav from '../../../components/Nav/Nav';
 import FriendBox from '../../../components/friendBox/FriendBox';
+import axios from 'axios';
 
 import './Main.scss';
 import '../../../styles/reset.scss';
 
 // 검색창 포커스 됬을 경우
 
-// const userData = {
-//   friend: [
-//     {
-//       id: Date.now() + Math.random() * 99,
-//       name: 'Elvis_lay',
-//       img: './images/wonikChoi/profile/elvis-ray-J-JOGvnfgM8-unsplash.jpg',
-//       backImg: './images/wonikChoi/picture/cat.jpeg',
-//     },
-//     {
-//       id: Date.now() + Math.random() * 99,
-//       name: 'cover-vesi',
-//       img: './images/wonikChoi/profile/people1.jpg',
-//       backImg: './images/wonikChoi/picture/food1.jpeg',
-//     },
-//     {
-//       id: Date.now() + Math.random() * 99,
-//       name: 'malon-alves',
-//       img: './images/wonikChoi/profile/marlon-alves-UGNVMLyQKtA-unsplash.jpg',
-//       backImg: './images/wonikChoi/picture/food2.jpg',
-//     },
-//     {
-//       id: Date.now() + Math.random() * 99,
-//       name: 'rick_gebhard',
-//       img: './images/wonikChoi/profile/rick-gebhardt-Hi_FonIcfjk-unsplash.jpg',
-//       backImg: './images/wonikChoi/picture/korea.jpg',
-//     },
-//     {
-//       id: Date.now() + Math.random() * 99,
-//       name: 'Yelihi',
-//       img: './images/wonikChoi/profile/myprofile.jpeg',
-//       backImg: './images/wonikChoi/picture/my.jpeg',
-//     },
-//     {
-//       id: Date.now() + Math.random() * 99,
-//       name: 'Mendenz',
-//       img: './images/wonikChoi/profile/people2.jpg',
-//       backImg: './images/wonikChoi/picture/football.jpg',
-//     },
-//   ],
-// };
-
 const MainWon = () => {
   const [commentList, setCommentList] = useState([]);
   const [userData, setUserData] = useState([]);
+  const navigate = useNavigate();
+
+  const myDataEmail = useRef();
+  const myDataName = useRef();
+  const myDataNickName = useRef();
 
   useEffect(() => {
     fetch('http://localhost:3000/data/commentData.json', {
@@ -75,6 +41,26 @@ const MainWon = () => {
       });
   }, []);
 
+  useEffect(() => {
+    axios.get('/api/users/auth').then(res => {
+      return (
+        (myDataEmail.current = res.data.email),
+        (myDataName.current = res.data.name),
+        (myDataNickName.current = res.data.nickName)
+      );
+    });
+  }, []);
+
+  const onLogoutHandler = () => {
+    axios.get('/api/users/logout').then(res => {
+      if (res.data.success) {
+        navigate('/login-won');
+      } else {
+        alert('로그아웃 하는데 실패했습니다.');
+      }
+    });
+  };
+
   return (
     <div className="main">
       <Nav />
@@ -89,12 +75,17 @@ const MainWon = () => {
                 userName={friend.name}
                 userImg={friend.img}
                 userBackImg={friend.backImg}
+                userNickName={myDataNickName.current}
               />
             );
           })}
         </div>
         <div className="main-right">
-          <ProfileBox />
+          <ProfileBox
+            name={myDataName.current}
+            nickName={myDataNickName.current}
+            onLogoutHandler={onLogoutHandler}
+          />
           <div className="profile-container__separate">
             <span>회원님을 위한 추천</span>
             <span>모두 보기</span>

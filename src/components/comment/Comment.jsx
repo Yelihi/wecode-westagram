@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './comment.scss';
 
-const Comment = ({ comment, id, dispatch }) => {
+const Comment = ({ comment, id, dispatch, nickName }) => {
   const [iconClass, setIconClass] = useState('bx bx-heart');
   const isFalse = useRef(true);
 
@@ -14,7 +14,7 @@ const Comment = ({ comment, id, dispatch }) => {
   return (
     <div className="description-comment">
       <div className="comment-left">
-        <div className="user-name">Yelihi</div>
+        <div className="user-name">{nickName}</div>
         <span className="user-comment">{comment}</span>
       </div>
       <div className="comment-right">

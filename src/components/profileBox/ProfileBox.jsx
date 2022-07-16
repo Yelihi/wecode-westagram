@@ -1,6 +1,6 @@
 import './profileBox.scss';
 
-export default function ProfileBox() {
+export default function ProfileBox({ name, nickName, onLogoutHandler }) {
   return (
     <div className="profileBox">
       <div className="profile-container">
@@ -9,12 +9,12 @@ export default function ProfileBox() {
             <img src="./images/wonikChoi/profile/myprofile.jpeg" alt="" />
           </div>
           <div className="profile-name">
-            <span className="profile-user">Yelihi</span>
-            <span className="profile-fullname">최원익</span>
+            <span className="profile-user">{nickName}</span>
+            <span className="profile-fullname">{name}</span>
           </div>
         </div>
         <div className="profile-right">
-          <span>전환</span>
+          <span onClick={onLogoutHandler}>로그아웃</span>
         </div>
       </div>
     </div>
