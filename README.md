@@ -1,9 +1,5 @@
 ## wecode | instargram clone coding
 
----
-
-### 인스타그램 로그인 페이지와 메인 페이지
-
 ## :: 구현 사항 설명
 
 ### 1. Login | 사용자 입력 데이터 저장
