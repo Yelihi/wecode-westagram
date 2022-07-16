@@ -6,10 +6,10 @@ import '../../../styles/reset.scss';
 // 로그인 부분 사진 변동시키기
 
 const LoginWon = () => {
-  const [valueId, setValueId] = useState('');
-  const [valuePw, setValuePw] = useState('');
-  const [disabled, setDisabled] = useState(true);
-  const [focus, setFocus] = useState('');
+  const [value, setValue] = useState({
+    email: '',
+    password: '',
+  });
 
   const interval = useRef();
   const navigate = useNavigate();
@@ -34,21 +34,12 @@ const LoginWon = () => {
     };
   }, [img]);
 
-  const onChangeId = e => {
-    setValueId(e.target.value);
+  const onChangeInput = e => {
+    const { name, value } = e.target;
+    setValue(prevValue => ({ ...prevValue, [name]: value }));
   };
 
-  const onChangePw = e => {
-    setValuePw(e.target.value);
-  };
-
-  const onkey = () => {
-    const valueArr = valueId.split('');
-    let valied =
-      valueArr.some(elm => elm === '@') && valuePw.length > 5
-        ? (setDisabled(false), setFocus('focus'))
-        : (setDisabled(true), setFocus(''));
-  };
+  let validation = value.email.includes('@') && value.password.length > 5;
 
   const onSubmit = e => {
     e.preventDefault();
@@ -83,30 +74,25 @@ const LoginWon = () => {
               <div className="login-logo">
                 <span>Westagram</span>
               </div>
-              <form
-                onKeyUp={onkey}
-                onSubmit={onSubmit}
-                action=""
-                className="login-input"
-              >
+              <form onSubmit={onSubmit} action="" className="login-input">
                 <input
                   type="text"
                   className="login-input__ID"
                   placeholder="전화번호, 사용자 이름 또는 이메일"
-                  value={valueId}
-                  onChange={onChangeId}
+                  name="email"
+                  onChange={onChangeInput}
                 />
                 <input
                   type="password"
                   className="login-input__PW"
                   placeholder="비밀번호"
-                  value={valuePw}
-                  onChange={onChangePw}
+                  name="password"
+                  onChange={onChangeInput}
                 />
                 <button
                   type="submit"
-                  className={`login-button ${focus}`}
-                  disabled={disabled}
+                  className={validation ? `login-button focus` : `login-button`}
+                  disabled={!validation}
                 >
                   로그인
                 </button>

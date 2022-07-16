@@ -56,7 +56,7 @@ const MainWon = () => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/data/commentData.json', {
+    fetch('http://localhost:3000/data/commentData.json', {
       method: 'GET', // GET method는 기본값이라서 생략이 가능합니다.
     })
       .then(res => res.json())
@@ -66,7 +66,7 @@ const MainWon = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:3001/data/userData.json', {
+    fetch('http://localhost:3000/data/userData.json', {
       method: 'GET', // GET method는 기본값이라서 생략이 가능합니다.
     })
       .then(res => res.json())

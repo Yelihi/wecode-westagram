@@ -41,11 +41,9 @@ export default function Feed({ userName, userImg, userBackImg }) {
   const likeNumber = useRef(Math.floor(Math.random() * 999) + 1000);
   const isFalse = useRef(true);
   const [heartClass, setHeartClass] = useState('bx bx-heart');
-  const disabled = useRef(true);
 
   useEffect(() => {
     setLike(likeNumber.current);
-    console.log('시작');
   }, []);
 
   const clickLike = () => {
