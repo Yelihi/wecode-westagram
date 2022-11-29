@@ -1,11 +1,15 @@
 <div align="center">
-  <img src="images/스크린샷 2022-11-29 오후 4.37.44.png" width="100%"/>
+  <img src="public/images/wonikChoi/westagram login.gif" width="100%"/>
 </div>
   <br/>
 
 <h2 align="center"> instargram clone coding </h1>
 <h3 align="center"> 간단한 로그인페이지 및 메인페이지 구현 </h3> 
 <br />
+
+<p align="justify"> 
+ 처음으로 리엑트를 공부하고 익숙해지기 위해 인스타그램의 로그인과 메인페이지를 구현해보았습니다. 
+</p>
 
 ![--------------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
